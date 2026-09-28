@@ -1,9 +1,10 @@
 name: probe
 on:
+  push:
   schedule:
     - cron: "*/5 * * * *"
 jobs:
   beat:
     runs-on: ubuntu-latest
     steps:
-      - run: echo probe
+      - run: echo "probe ${{ github.event_name }} $(date -u +%FT%TZ)"
